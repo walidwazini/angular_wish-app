@@ -8,7 +8,7 @@ import { WishItem } from 'src/shared/models/wishItem';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  items = [
+  items : WishItem[] = [
     new WishItem('Learn Angular'),
     new WishItem('Learn Vuejs'),
     new WishItem('Drink a coffee'),
