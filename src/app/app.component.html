@@ -10,8 +10,14 @@
       No wish added yet.
     </div>
 
-    <div class="bg-red-500 p-2 max-w-md flex gap-2" *ngFor="let item of items">
-      <input type="checkbox" [checked]="item.isComplete" />
+    <div 
+        class="p-2 max-w-md flex gap-2 hover:cursor-pointer hover:bg-red-700 bg-red-500 " 
+        *ngFor="let item of items"
+      >
+      <input 
+        class="hover:cursor-pointer" type="checkbox" 
+        [checked]="item.isComplete" (click)="toggleItem(item)" 
+      />
       <p class="{{item.isComplete ? 'line-through' : ''}} italic " >
         {{item.text}}
       </p>
