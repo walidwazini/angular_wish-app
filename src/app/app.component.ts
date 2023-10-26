@@ -15,7 +15,16 @@ export class AppComponent {
   ]
   title = 'wishlist';
 
+  newWishText = ''
+
   toggleItem(item:any) {
     item.isComplete = !item.isComplete
+  }
+
+  addWish(){
+    // 1. add new wish
+    this.items.push(new WishItem(Math.random(),this.newWishText))
+    // 2. clear textbox
+    this.newWishText = ''
   }
 }

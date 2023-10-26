@@ -1,34 +1,47 @@
 <div class="container p-10 ">
   <h1 class="text-3xl font-bold underline text-white"> The Wishlist! </h1>
-  <div class="bg-[#222442] mt-8 p-4 h-[300px] rounded-md flex flex-col gap-3 ">
-
-    <!-- 
+  <div class="flex gap-4 w-[1000px] h-[500px] p-1 mt-8 justify-center ">
+    <div class="bg-[#222442] basis-1/2 p-4 h-[300px] rounded-md flex flex-col gap-3 ">
+      <!-- 
       # types of structure directive ==> ngIf, ngIfElse, ngIfThen
      -->
-
-    <div class="text-white" *ngIf="items.length === 0">
-      No wish added yet.
+      <div class="text-white" *ngIf="items.length === 0">
+        No wish added yet.
+      </div>
+      <div class="p-2 max-w-md flex gap-2 hover:cursor-pointer hover:bg-red-700 bg-red-500 " *ngFor="let item of items">
+        <input class="hover:cursor-pointer" type="checkbox" [checked]="item.isComplete" (click)="toggleItem(item)" />
+        <p class="{{item.isComplete ? 'line-through' : ''}} italic ">
+          {{item.text}}
+        </p>
+      </div>
+      <div *ngIf="items.length > 3;else elseBlock">
+        This is too much
+      </div>
+      <ng-template #elseBlock>
+        <p class="text-white mt-4 line-through">
+          This is okay
+        </p>
+      </ng-template>
     </div>
 
-    <div 
-        class="p-2 max-w-md flex gap-2 hover:cursor-pointer hover:bg-red-700 bg-red-500 " 
-        *ngFor="let item of items"
-      >
-      <input 
-        class="hover:cursor-pointer" type="checkbox" 
-        [checked]="item.isComplete" (click)="toggleItem(item)" 
-      />
-      <p class="{{item.isComplete ? 'line-through' : ''}} italic " >
-        {{item.text}}
-      </p>
+    <!-- FORM  -->
+    <div class="bg-blue-700 basis-1/2 rounded-md p-2" >
+      <form class="flex flex-col h-full items-center gap-4 " >
+        <div class="mt-14 flex gap-3 " >
+          <label class="text-white" for="inputName">Wish</label>
+          <input type="text" 
+          [(ngModel)]="newWishText" name="wishText"
+          class="p-1 text-sm outline-none rounded-md"
+           />
+        </div>
+        <div>
+          <button 
+            (click)="$event.preventDefault(); addWish()"
+            class="px-3 py-2 bg-green-500 rounded-md text-white " >
+            Submit
+        </button>
+        </div>
+      </form>
     </div>
-    <div *ngIf="items.length > 3;else elseBlock" >
-      This is too much
-    </div>
-    <ng-template #elseBlock  >
-      <p class="text-white mt-4 line-through" >
-        This is okay
-      </p>
-    </ng-template>
   </div>
 </div>
