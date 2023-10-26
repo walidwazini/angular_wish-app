@@ -10,7 +10,7 @@ import { WishItem } from 'src/shared/models/wishItem';
 export class AppComponent {
   items : WishItem[] = [
     new WishItem('Learn Angular'),
-    new WishItem('Learn Vuejs'),
+    new WishItem('Learn Vuejs',true),
     new WishItem('Drink a coffee'),
   ]
   title = 'wishlist';

@@ -1,5 +1,5 @@
 <div class="container p-10 ">
-  <h1 class="text-3xl font-bold underline text-red-700"> The Wishlist! </h1>
+  <h1 class="text-3xl font-bold underline text-white"> The Wishlist! </h1>
   <div class="bg-[#222442] mt-8 p-4 h-[300px] rounded-md flex flex-col gap-3 ">
 
     <!-- 
@@ -11,8 +11,8 @@
     </div>
 
     <div class="bg-red-500 p-2 max-w-md flex gap-2" *ngFor="let item of items">
-      <input type="checkbox" />
-      <p>
+      <input type="checkbox" [checked]="item.isComplete" />
+      <p class="{{item.isComplete ? 'line-through' : ''}} italic " >
         {{item.text}}
       </p>
     </div>
@@ -20,7 +20,7 @@
       This is too much
     </div>
     <ng-template #elseBlock  >
-      <p class="text-white mt-4" >
+      <p class="text-white mt-4 line-through" >
         This is okay
       </p>
     </ng-template>
